@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/UserContext";
-import { authService } from "../appwrite/auth";
+import { authService } from "../appwrite/Auth";
 
 const Navbar = () => {
     const {state, dispatch} = useAuth()
