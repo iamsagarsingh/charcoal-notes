@@ -26,7 +26,7 @@ const Navbar = () => {
                 <li className="md:text-2xl text-sm font-bold">
                     {state?.userData?.name}
                 </li>
-          <li className="bg-white border-4 border-black md:px-4 px-1 py-0.5 text-sm shadow-[3px_3px_0px_rgba(0,0,0,1)] hover:bg-gray-100 cursor-pointer transition" onClick={handleLogout}>
+          <li className="bg-white border-4 border-black md:px-4 px-1 py-0.5 md:text-xl text-sm shadow-[3px_3px_0px_rgba(0,0,0,1)] hover:bg-gray-100 cursor-pointer transition" onClick={handleLogout}>
             Logout
           </li>
                 </ul>
@@ -35,12 +35,12 @@ const Navbar = () => {
             (
                 <>
                 <Link to="/login">
-          <li className="bg-white border-4 border-black md:px-4 px-1 py-1 shadow-[3px_3px_0px_rgba(0,0,0,1)] hover:bg-gray-100 cursor-pointer transition">
+          <li className="bg-white border-4 border-black md:text-xl text-sm md:px-4 px-1 py-1 shadow-[3px_3px_0px_rgba(0,0,0,1)] hover:bg-gray-100 cursor-pointer transition">
             Login
           </li>
         </Link>
         <Link to="/signup">
-          <li className="bg-white border-4 border-black md:px-4 px-1 py-1 shadow-[3px_3px_0px_rgba(0,0,0,1)] hover:bg-gray-100 cursor-pointer transition">
+          <li className="bg-white border-4 border-black md:text-xl text-sm md:px-4 px-1 py-1 shadow-[3px_3px_0px_rgba(0,0,0,1)] hover:bg-gray-100 cursor-pointer transition">
             Signup
           </li>
         </Link>
