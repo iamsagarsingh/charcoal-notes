@@ -35,12 +35,12 @@ const Navbar = () => {
             (
                 <>
                 <Link to="/login">
-          <li className="bg-white border-4 border-black px-4 py-1 shadow-[3px_3px_0px_rgba(0,0,0,1)] hover:bg-gray-100 cursor-pointer transition">
+          <li className="bg-white border-4 border-black md:px-4 px-1 py-1 shadow-[3px_3px_0px_rgba(0,0,0,1)] hover:bg-gray-100 cursor-pointer transition">
             Login
           </li>
         </Link>
         <Link to="/signup">
-          <li className="bg-white border-4 border-black px-4 py-1 shadow-[3px_3px_0px_rgba(0,0,0,1)] hover:bg-gray-100 cursor-pointer transition">
+          <li className="bg-white border-4 border-black md:px-4 px-1 py-1 shadow-[3px_3px_0px_rgba(0,0,0,1)] hover:bg-gray-100 cursor-pointer transition">
             Signup
           </li>
         </Link>
