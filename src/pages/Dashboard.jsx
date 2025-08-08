@@ -31,7 +31,7 @@ export const Dashboard = () => {
         noteState.notes.map((note,index)=>{
             return (<Link key={index} to={`/note/${note.$id}`}>
                 {
-                    <NoteCard  title={note.title} createdAt={'12-03-2024'}/>
+                    <NoteCard  title={note.title} createdAt={note.$createdAt.split('T')[0].split('-').reverse().join('-')}/>
                 }
             </Link>)
         })
