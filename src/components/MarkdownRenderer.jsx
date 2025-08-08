@@ -1,8 +1,9 @@
 import React from "react";
 import { useToast } from "../notifications/ToastProvider";
+import { IoCopyOutline } from "react-icons/io5";
 
 const MarkdownRenderer = ({ markdown }) => {
-    const {showToast} = useToast()
+  const { showToast } = useToast();
   const parseMarkdown = (text) => {
     const lines = text.split("\n");
     const elements = [];
@@ -11,70 +12,72 @@ const MarkdownRenderer = ({ markdown }) => {
     let codeLines = [];
 
     const renderInline = (line, index) => {
-  const inlineCodeRegex = /`([^`]+)`/g;
-  const boldRegex = /\*\*(.*?)\*\*/g;
+      const inlineCodeRegex = /`([^`]+)`/g;
+      const boldRegex = /\*\*(.*?)\*\*/g;
 
-  let parts = [];
-  let lastIndex = 0;
-  let keyIndex = 0;
+      let parts = [];
+      let lastIndex = 0;
+      let keyIndex = 0;
 
-  // Handle inline code
-  line.replace(inlineCodeRegex, (match, p1, offset) => {
-    if (offset > lastIndex) {
-      parts.push(line.slice(lastIndex, offset));
-    }
-    parts.push(
-      <code
-        key={`${index}-inline-${keyIndex++}`}
-        className="bg-gray-200 px-1 py-0.5 rounded"
-      >
-        {p1}
-      </code>
-    );
-    lastIndex = offset + match.length;
-  });
-
-  if (parts.length === 0) {
-    parts.push(line); // no inline code found
-  } else if (lastIndex < line.length) {
-    parts.push(line.slice(lastIndex));
-  }
-
-  // Now process each part for bold text
-  const finalParts = [];
-  parts.forEach((part, i) => {
-    if (typeof part === "string") {
-      let last = 0;
-      let boldIndex = 0;
-
-      part.replace(boldRegex, (match, p1, offset) => {
-        if (offset > last) {
-          finalParts.push(part.slice(last, offset));
+      // Handle inline code
+      line.replace(inlineCodeRegex, (match, p1, offset) => {
+        if (offset > lastIndex) {
+          parts.push(line.slice(lastIndex, offset));
         }
-        finalParts.push(
-          <strong key={`${index}-bold-${boldIndex++}`} className="font-bold">
+        parts.push(
+          <code
+            key={`${index}-inline-${keyIndex++}`}
+            className="bg-gray-200 px-1 py-0.5 rounded break-words whitespace-break-spaces"
+          >
             {p1}
-          </strong>
+          </code>
         );
-        last = offset + match.length;
+        lastIndex = offset + match.length;
       });
 
-      if (last < part.length) {
-        finalParts.push(part.slice(last));
+      if (parts.length === 0) {
+        parts.push(line); // no inline code found
+      } else if (lastIndex < line.length) {
+        parts.push(line.slice(lastIndex));
       }
-    } else {
-      finalParts.push(part); // JSX element (like <code>)
-    }
-  });
 
-  return finalParts;
-};
+      // Now process each part for bold text
+      const finalParts = [];
+      parts.forEach((part, i) => {
+        if (typeof part === "string") {
+          let last = 0;
+          let boldIndex = 0;
 
+          part.replace(boldRegex, (match, p1, offset) => {
+            if (offset > last) {
+              finalParts.push(part.slice(last, offset));
+            }
+            finalParts.push(
+              <strong
+                key={`${index}-bold-${boldIndex++}`}
+                className="font-bold"
+              >
+                {p1}
+              </strong>
+            );
+            last = offset + match.length;
+          });
+
+          if (last < part.length) {
+            finalParts.push(part.slice(last));
+          }
+        } else {
+          finalParts.push(part); // JSX element (like <code>)
+        }
+      });
+
+      return finalParts;
+    };
 
     const copyToClipboard = async (code) => {
       try {
         await navigator.clipboard.writeText(code);
-        showToast('Copied to clipboard!','success')
+        showToast("Copied to clipboard!", "success");
       } catch (err) {
         console.error("Failed to copy: ", err);
       }
@@ -90,11 +93,11 @@ const MarkdownRenderer = ({ markdown }) => {
             <div key={index} className="relative">
               <button
                 onClick={() => copyToClipboard(codeContent)}
-                className="absolute top-2 right-2 text-xs bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600"
+                className="absolute top-2 right-2 text-lg bg-transparent text-white px-2 py-1 rounded hover:bg-blue-600"
               >
-                Copy
+                <IoCopyOutline />
               </button>
-              <pre className="bg-gray-800 text-white p-3 rounded overflow-x-auto">
+              <pre className="bg-gray-800 text-white p-1 md:p-3 rounded overflow-x-auto">
                 <code>{codeContent}</code>
               </pre>
             </div>
