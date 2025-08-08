@@ -41,17 +41,17 @@ const MarkdownEditor = ({initialContent = "", onSubmit, noteId=null }) => {
   return (
     <div className="w-full mx-auto p-4 bg-white shadow-lg rounded-xl">
       <div className="flex justify-between items-center mb-2">
-        <h2 className="text-lg font-semibold">Markdown Editor</h2>
+        <h2 className="md:text-lg text-sm font-semibold">Markdown Editor</h2>
         <div className="space-x-2">
           <button
             onClick={handlePreviewToggle}
-            className="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600"
+            className="bg-blue-200 border-4 border-black text-sm md:px-4 px-1 py-1 shadow-[3px_3px_0px_rgba(0,0,0,1)] hover:bg-gray-100 cursor-pointer transition"
           >
             {previewMode ? "Edit" : "Preview"}
           </button>
           <button
             onClick={handleSubmit}
-            className="bg-green-600 text-white px-4 py-1 rounded hover:bg-green-700"
+            className="bg-green-200 border-4 border-black text-sm md:px-4 px-1 py-1 shadow-[3px_3px_0px_rgba(0,0,0,1)] hover:bg-gray-100 cursor-pointer transition"
           >
             Submit
           </button>
