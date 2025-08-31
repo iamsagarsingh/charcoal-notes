@@ -52,6 +52,35 @@ class AuthServices {
       console.log("Logout Error.");
     }
   }
+
+  // password-reset
+  // 1. user gives url page 1.
+  // 2. appwrite sends email to the user.
+  // 3. on clicking the url by user -> page 2 where secret and userId is verifed.
+  // 4. if all good then user gets the whole page 2 where he can make another request to reset the password.
+
+  async recoverPassword(email){
+    try{
+      const emailStatus = await this.account.createRecovery(
+        email,
+        "http://localhost:5173/reset-password" // destination page where user lands after clicking on emailed password reset link.
+      )
+      return emailStatus
+    }
+    catch(err){
+      console.log("Error in recovering password.",err);
+    }
+  }
+
+  async updatePasswordRecovery(userId,secret,password){
+    try{
+      await this.account.updateRecovery(userId,secret,password)
+    }
+    catch{
+      console.log("Update Recovery Password error");
+    }
+  }
+
 }
 
 export const authService = new AuthServices();
