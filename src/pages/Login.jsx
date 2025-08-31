@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { authService } from "../appwrite/Auth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/UserContext";
 import { useToast } from "../notifications/ToastProvider";
 
@@ -77,6 +77,11 @@ const Login = () => {
           >
             Login
           </button>
+
+          {/* Password reset url */}
+          <div className="flex items-center justify-center">
+            <span><Link to='/rest-password-email'>Forgot password?</Link></span>
+          </div>
         </form>
       </div>
     </div>

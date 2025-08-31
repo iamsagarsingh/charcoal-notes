@@ -12,6 +12,8 @@ import GuestRoutes from "./routes/GuestRoutes.jsx";
 import NoteEditor from "./pages/NoteEditor.jsx";
 import { NoteContextProvider } from "./context/NotesContext.jsx";
 import { NoteViewer } from "./pages/NoteViewer.jsx";
+import { SendPasswordResetEmail } from "./pages/SendPasswordResetEmail.jsx";
+import { UpdatePassword } from "./pages/UpdatePassword.jsx";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +33,22 @@ const router = createBrowserRouter([
         element: (
           <GuestRoutes>
             <Signup />
+          </GuestRoutes>
+        ),
+      },
+      {
+        path: "/rest-password-email",
+        element: (
+          <GuestRoutes>
+            <SendPasswordResetEmail />
+          </GuestRoutes>
+        ),
+      },
+      {
+        path: "/reset-password",
+        element: (
+          <GuestRoutes>
+            <UpdatePassword />
           </GuestRoutes>
         ),
       },
