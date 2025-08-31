@@ -4,16 +4,15 @@ import { useToast } from "../notifications/ToastProvider";
 
 export const SendPasswordResetEmail = () => {
   const [email, setEmail] = useState("");
-  const  {setToast} = useToast()
+  const  {showToast} = useToast()
   async function handleSubmit(e) {
     e.preventDefault()
     const status = await authService.recoverPassword(email)
     if(status){
-        showToast('success','success')
+        showToast('rest mail sent','success')
     }
     else{
-        console.log("error in handlesub");
-        
+        showToast('something went wrong','error')
     }
   }
   return (

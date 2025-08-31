@@ -20,7 +20,7 @@ export const UpdatePassword = () =>{
                 navigate('/login')
             })
             .catch((err)=>{
-                showToast('failed','something went wrong')
+                showToast('failed','error')
             })
         }
     }

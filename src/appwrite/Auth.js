@@ -63,7 +63,7 @@ class AuthServices {
     try{
       const emailStatus = await this.account.createRecovery(
         email,
-        "http://localhost:5173/reset-password" // destination page where user lands after clicking on emailed password reset link.
+        "https://charcoal-notes.vercel.app/reset-password" // destination page where user lands after clicking on emailed password reset link.
       )
       return emailStatus
     }
