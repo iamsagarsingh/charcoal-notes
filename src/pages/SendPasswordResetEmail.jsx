@@ -9,7 +9,7 @@ export const SendPasswordResetEmail = () => {
     e.preventDefault()
     const status = await authService.recoverPassword(email)
     if(status){
-        showToast('rest mail sent','success')
+        showToast('reset mail has been sent check inbox/spam','success')
     }
     else{
         showToast('something went wrong','error')

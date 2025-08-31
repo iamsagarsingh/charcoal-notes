@@ -28,7 +28,7 @@ export const UpdatePassword = () =>{
     <div className="flex justify-center items-center my-24 bg-sky-50 px-4">
       <div className="w-full max-w-sm bg-blue-100 border-4 border-black p-6 shadow-[6px_6px_0px_rgba(0,0,0,1)] rounded-lg">
         <h2 className="text-2xl font-extrabold mb-6 text-center border-b-4 border-black pb-2">
-          Password Recovery link
+          Reset Password
         </h2>
         <form className="space-y-4" onSubmit={handleReset}>
           {/* New Password */}
